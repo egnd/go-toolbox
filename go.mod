@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	github.com/cespare/xxhash v1.1.0
+	github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/rs/zerolog v1.28.0
 	github.com/spf13/viper v1.14.0
@@ -31,6 +32,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/objx v0.5.0 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
+	github.com/technoweenie/multipartstreamer v1.0.1 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.8.0 // indirect
 	golang.org/x/sys v0.3.0 // indirect

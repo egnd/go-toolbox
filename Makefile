@@ -34,6 +34,7 @@ check-master: ## Check for latest master in current branch
 mocks: ## Generate mocks
 	rm -rf pipelines/mocks && mockery --config=.mockery.yaml --name=. --dir=pipelines --output=pipelines/mocks
 	rm -rf xmlparse/mocks && mockery --config=.mockery.yaml --name=. --dir=xmlparse --output=xmlparse/mocks
+	rm -rf tgchain/mocks && mockery --config=.mockery.yaml --name=. --dir=tgchain --output=tgchain/mocks
 
 tests: ## Run unit tests
 	@mkdir -p .profiles
