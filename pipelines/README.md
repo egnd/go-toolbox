@@ -15,10 +15,10 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/egnd/go-pipeline/assign"
-	"github.com/egnd/go-pipeline/decorators"
-	"github.com/egnd/go-pipeline/pools"
-	"github.com/egnd/go-pipeline/tasks"
+	"github.com/egnd/go-toolbox/pipelines/assign"
+	"github.com/egnd/go-toolbox/pipelines/decorators"
+	"github.com/egnd/go-toolbox/pipelines/pools"
+	"github.com/egnd/go-toolbox/pipelines/tasks"
 	"github.com/rs/zerolog"
 	"go.uber.org/zap"
 )

@@ -21,9 +21,9 @@ ocker-benchmarks:
 profiles: ## Generate svg-profiles
 	@mkdir -p .profiles
 	go test -cpuprofile .profiles/cpu.out -memprofile .profiles/mem.out -bench . benchmarks_test.go
-	go tool pprof -svg go-pipeline.test .profiles/cpu.out > .profiles/cpu.svg
-	go tool pprof -svg -alloc_space go-pipeline.test .profiles/mem.out > .profiles/mem.svg
-	go tool pprof -svg -alloc_objects go-pipeline.test .profiles/mem.out > .profiles/obj.svg
+	go tool pprof -svg pipeline.test .profiles/cpu.out > .profiles/cpu.svg
+	go tool pprof -svg -alloc_space pipeline.test .profiles/mem.out > .profiles/mem.svg
+	go tool pprof -svg -alloc_objects pipeline.test .profiles/mem.out > .profiles/obj.svg
 
 docker-profiles:
 	docker run --rm -it -v $$(pwd):/src -w /src --entrypoint bash golang:1.19 -c "apt-get update -qq && apt-get install -y graphviz > /dev/null && make profiles $(CALL_PARAM)"
