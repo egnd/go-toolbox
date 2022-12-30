@@ -1,0 +1,38 @@
+---
+# https://github.com/golangci/golangci-lint#configuration
+run:
+  go: 1.19
+  deadline: 5m
+  concurency: 4
+  timeout: 1m
+  issues-exit-code: 1
+  tests: false
+  skip-dirs:
+    - vendor
+output:
+  format: tab
+  print-issued-lines: true
+  print-linter-name: true
+linters:
+  enable-all: true
+  disable:
+    - scopelint
+    - deadcode
+    - ifshort
+    - varcheck
+    - nosnakecase
+    - structcheck
+    - exhaustivestruct
+    - golint
+    - maligned
+    - interfacer #@TODO: enable
+    - rowserrcheck #@TODO: enable
+    - sqlclosecheck #@TODO: enable
+    - structcheck #@TODO: enable
+    - wastedassign #@TODO: enable
+  fast: false
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0
+  new: false
