@@ -13,7 +13,7 @@ help:
 ########################################################################################################################
 
 benchmarks: ## Run benchmarks
-	go test -benchmem -bench . benchmarks_test.go
+	go test -benchmem -bench .
 
 profiles: ## Generate svg-profiles
 	@mkdir -p .profiles

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FictionBook xmlns="http://www.gribuser.ru/xml/fictionbook/2.0" xmlns:l="http://www.w3.org/1999/xlink">
+	<description>
+		<title-info>
+			<genre>adventure</genre>
+			<author>
+				<first-name>name1</first-name>
+				<middle-name>patr</middle-name>
+				<last-name>surname</last-name>
+				<nickname>nickname1</nickname>
+				<home-page>http://localhost</home-page>
+				<home-page>http://localhost2</home-page>
+				<email>test@test.test</email>
+				<email>test@test.test</email>
+				<id>d9f78s98s98</id>
+			</author>
+			<book-title>test book title</book-title>
+			<annotation>test annotation</annotation>
+			<keywords>test keywords</keywords>
+			<date value="2022-01-31">2022-01-31</date>
+			<coverpage><image l:href="#mv3.jpg"/></coverpage>
+			<lang>ru</lang>
+			<src-lang>en</src-lang>
+			<translator>
+				<first-name>name1</first-name>
+				<middle-name>patr</middle-name>
+				<last-name>surname</last-name>
+				<nickname>nickname1</nickname>
+				<home-page>http://localhost</home-page>
+				<home-page>http://localhost2</home-page>
+				<email>test@test.test</email>
+				<email>test@test.test</email>
+				<id>d9f78s98s98</id>
+			</translator>
+			<sequence name="test seq" number="1"/>
+		</title-info>
+		<src-title-info>
+			<genre>adventure</genre>
+			<author>
+				<first-name>name1</first-name>
+				<middle-name>patr</middle-name>
+				<last-name>surname</last-name>
+				<nickname>nickname1</nickname>
+				<home-page>http://localhost</home-page>
+				<home-page>http://localhost2</home-page>
+				<email>test@test.test</email>
+				<email>test@test.test</email>
+				<id>d9f78s98s98</id>
+			</author>
+			<book-title>test book title</book-title>
+			<annotation>test<br>annotation</annotation>
+			<keywords>test keywords</keywords>
+			<date value="2022-01-31">2022-01-31</date>
+			<coverpage><image l:href="#mv3.jpg"/></coverpage>
+			<lang>ru</lang>
+			<src-lang>en</src-lang>
+			<translator>
+				<first-name>name1</first-name>
+				<middle-name>patr</middle-name>
+				<last-name>surname</last-name>
+				<nickname>nickname1</nickname>
+				<home-page>http://localhost</home-page>
+				<home-page>http://localhost2</home-page>
+				<email>test@test.test</email>
+				<email>test@test.test</email>
+				<id>d9f78s98s98</id>
+			</translator>
+			<sequence name="test seq" number="1"/>
+		</src-title-info>
+		<document-info>
+			<author>
+				<first-name>name1</first-name>
+				<middle-name>patr</middle-name>
+				<last-name>surname</last-name>
+				<nickname>nickname1</nickname>
+				<home-page>http://localhost</home-page>
+				<home-page>http://localhost2</home-page>
+				<email>test@test.test</email>
+				<email>test@test.test</email>
+				<id>d9f78s98s98</id>
+			</author>
+			<src-url>http://localhost</src-url>
+			<id>EC7E8CA8-9E35-48C6-A81B-3F8566FC024C</id>
+			<version>1.1</version>
+			<publisher>
+				<first-name>name</first-name>
+				<middle-name>patr</middle-name>
+				<last-name>surname</last-name>
+				<nickname>nickname</nickname>
+				<home-page>http://localhost</home-page>
+				<home-page>http://localhost2</home-page>
+				<email>test@test.test</email>
+				<email>test@test.test</email>
+				<id>d9f78s98s98</id>
+			</publisher>
+		</document-info>
+		<publish-info>
+			<book-author>test author</book-author>
+			<book-name>test book</book-name>
+			<publisher>test publisher</publisher>
+			<city>test city</city>
+			<year>2022</year>
+			<isbn>d90f7s7fs97s9</isbn>
+			<sequence name="test seq" number="1"/>
+		</publish-info>
+		<custom-info info-type="purchased">false</custom-info>
+	</description>
+	<body>book body content</body>
+	<binary id="mv3.jpg" content-type="application/octet-stream">CAZABIADASIAAhEBAxEB</binary>
+</FictionBook>
