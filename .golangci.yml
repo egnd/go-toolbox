@@ -25,11 +25,13 @@ linters:
     - exhaustivestruct
     - golint
     - maligned
+    - nonamedreturns
     - interfacer #@TODO: enable
     - rowserrcheck #@TODO: enable
     - sqlclosecheck #@TODO: enable
     - structcheck #@TODO: enable
     - wastedassign #@TODO: enable
+    - goerr113 #@TODO: enable
   fast: false
 issues:
   exclude-use-default: false

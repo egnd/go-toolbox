@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/egnd/go-toolbox/config"
+
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/assert"
 )

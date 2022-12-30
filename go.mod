@@ -3,10 +3,13 @@ module github.com/egnd/go-toolbox
 go 1.19
 
 require (
+	github.com/cespare/xxhash v1.1.0
+	github.com/egnd/go-pipeline v1.2.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/rs/zerolog v1.28.0
 	github.com/spf13/viper v1.14.0
 	github.com/stretchr/testify v1.8.1
+	go.uber.org/zap v1.21.0
 	golang.org/x/sync v0.1.0
 )
 
@@ -26,7 +29,10 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/stretchr/objx v0.5.0 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
+	go.uber.org/atomic v1.9.0 // indirect
+	go.uber.org/multierr v1.8.0 // indirect
 	golang.org/x/sys v0.0.0-20220908164124-27713097b956 // indirect
 	golang.org/x/text v0.4.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect

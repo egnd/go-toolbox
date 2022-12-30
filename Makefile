@@ -31,6 +31,9 @@ check-master: ## Check for latest master in current branch
 	@if ! git log --pretty=format:'%H' | grep $$(git log --pretty=format:'%H' -n 1 origin/master) > /dev/null; then exit 1; fi
 	@echo "All is OK"
 
+mocks: ## Generate mocks
+	rm -rf pipelines/mocks && mockery --config=.mockery.yaml --name=. --dir=pipelines --output=pipelines/mocks
+
 tests: ## Run unit tests
 	@mkdir -p .profiles
 	go test -race -cover -covermode=atomic -coverprofile=.profiles/cover.out.tmp ./...
