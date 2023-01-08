@@ -32,6 +32,7 @@ linters:
     - structcheck #@TODO: enable
     - wastedassign #@TODO: enable
     - goerr113 #@TODO: enable
+    - wrapcheck #@TODO: enable
   fast: false
 issues:
   exclude-use-default: false
