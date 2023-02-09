@@ -7,8 +7,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/egnd/go-toolbox/tgchain"
-	"github.com/egnd/go-toolbox/tgchain/mocks"
+	"github.com/egnd/go-toolbox/tg/tgchain"
+	"github.com/egnd/go-toolbox/tg/tgchain/mocks"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 	"github.com/stretchr/testify/mock"
 )

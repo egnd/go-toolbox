@@ -31,7 +31,7 @@ func NewListener(warnUpd WarnUpd, errUpd ErrUpd) *Listener {
 }
 
 // Add adds decorators for handling specific Telegram event.
-func (b *Listener) Add(event EventType, handlers ...IEventHandler) IListener { //nolint:ireturn
+func (b *Listener) Add(event EventType, handlers ...IEventHandler) IListener {
 	b.handlers[event] = append(b.handlers[event], handlers...)
 
 	return b

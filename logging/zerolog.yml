@@ -1,0 +1,10 @@
+level: info
+time_format: 2006-01-02T15:04:05Z07:00
+duration_unit: 1s
+caller: false
+pretty: false
+colors: false
+fields_names:
+  level: level
+  msg: msg
+  time: ts

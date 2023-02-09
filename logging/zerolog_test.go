@@ -74,6 +74,12 @@ logs:
 	}
 }
 
+func Test_ZerologCfgViperPanic(t *testing.T) {
+	assert.Panics(t, func() {
+		logging.NewZerologCfgViper(viper.New())
+	})
+}
+
 func Test_Zerolog(t *testing.T) {
 	cases := []struct {
 		cfg   logging.ZerologCfg
