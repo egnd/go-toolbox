@@ -30,7 +30,7 @@ func Test_UsersWhiteList(t *testing.T) {
 
 	for k, test := range cases {
 		t.Run(fmt.Sprint(k+1), func(t *testing.T) {
-			ctx := &mocks.Context{}
+			ctx := &mocks.TelebotContext{}
 			defer ctx.AssertExpectations(t)
 
 			ctx.On("Sender").Return(&telebot.User{Username: test.sender})

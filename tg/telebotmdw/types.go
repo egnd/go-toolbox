@@ -2,6 +2,7 @@ package telebotmdw
 
 import "gopkg.in/telebot.v3"
 
-type Context interface {
+// TelebotContext is an interface for telebot.Context.
+type TelebotContext interface {
 	telebot.Context
 }

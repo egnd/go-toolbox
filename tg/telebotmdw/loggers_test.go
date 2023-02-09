@@ -14,7 +14,7 @@ import (
 )
 
 func Test_CtxGetLogger(t *testing.T) {
-	ctx := &mocks.Context{}
+	ctx := &mocks.TelebotContext{}
 	defer ctx.AssertExpectations(t)
 
 	ctx.On("Get", "logger").Return(nil, false)
@@ -25,7 +25,7 @@ func Test_CtxGetLogger(t *testing.T) {
 func Test_CtxWithLogger(t *testing.T) {
 	logger := zerolog.Nop()
 
-	ctx := &mocks.Context{}
+	ctx := &mocks.TelebotContext{}
 	defer ctx.AssertExpectations(t)
 
 	ctx.On("Set", "logger", logger)
@@ -48,7 +48,7 @@ func Test_LogUpdate(t *testing.T) {
 
 	for k, test := range cases {
 		t.Run(fmt.Sprint(k+1), func(t *testing.T) {
-			ctx := &mocks.Context{}
+			ctx := &mocks.TelebotContext{}
 			defer ctx.AssertExpectations(t)
 
 			if test.err == nil {
@@ -104,7 +104,7 @@ func Test_AddCtxLogger(t *testing.T) {
 	for k, test := range cases {
 		t.Run(fmt.Sprint(k+1), func(t *testing.T) {
 			logger := zerolog.Nop()
-			ctx := &mocks.Context{}
+			ctx := &mocks.TelebotContext{}
 			defer ctx.AssertExpectations(t)
 
 			ctx.On("Update").Return(test.upd)

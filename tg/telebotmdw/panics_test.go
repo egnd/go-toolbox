@@ -12,27 +12,27 @@ import (
 
 func Test_CatchPanics_Success(t *testing.T) {
 
-	assert.NoError(t, telebotmdw.CatchPanics(false)(func(_ telebot.Context) error { return nil })(&mocks.Context{}))
+	assert.NoError(t, telebotmdw.CatchPanics(false)(func(_ telebot.Context) error { return nil })(&mocks.TelebotContext{}))
 }
 
 func Test_CatchPanics_Error(t *testing.T) {
-	assert.EqualError(t, telebotmdw.CatchPanics(false)(func(_ telebot.Context) error { return errors.New("some error") })(&mocks.Context{}), "some error")
+	assert.EqualError(t, telebotmdw.CatchPanics(false)(func(_ telebot.Context) error { return errors.New("some error") })(&mocks.TelebotContext{}), "some error")
 }
 
 func Test_CatchPanics_Catch_Panic_Err(t *testing.T) {
-	assert.EqualError(t, telebotmdw.CatchPanics(true)(func(_ telebot.Context) error { panic(errors.New("some panic")) })(&mocks.Context{}), "panic: some panic")
+	assert.EqualError(t, telebotmdw.CatchPanics(true)(func(_ telebot.Context) error { panic(errors.New("some panic")) })(&mocks.TelebotContext{}), "panic: some panic")
 }
 
 func Test_CatchPanics_Catch_Panic_Str(t *testing.T) {
-	assert.EqualError(t, telebotmdw.CatchPanics(true)(func(_ telebot.Context) error { panic("some panic") })(&mocks.Context{}), "panic: some panic")
+	assert.EqualError(t, telebotmdw.CatchPanics(true)(func(_ telebot.Context) error { panic("some panic") })(&mocks.TelebotContext{}), "panic: some panic")
 }
 
 func Test_CatchPanics_Catch_Panic_Val(t *testing.T) {
-	assert.EqualError(t, telebotmdw.CatchPanics(true)(func(_ telebot.Context) error { panic(123) })(&mocks.Context{}), "panic: 123")
+	assert.EqualError(t, telebotmdw.CatchPanics(true)(func(_ telebot.Context) error { panic(123) })(&mocks.TelebotContext{}), "panic: 123")
 }
 
 func Test_CatchPanics_NoCatch_Panic(t *testing.T) {
 	assert.PanicsWithValue(t, "some panic", func() {
-		telebotmdw.CatchPanics(false)(func(_ telebot.Context) error { panic("some panic") })(&mocks.Context{})
+		telebotmdw.CatchPanics(false)(func(_ telebot.Context) error { panic("some panic") })(&mocks.TelebotContext{})
 	})
 }
