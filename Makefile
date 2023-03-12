@@ -32,10 +32,12 @@ check-master: ## Check for latest master in current branch
 	@echo "All is OK"
 
 mocks: ## Generate mocks
+# go generate ./...
 	rm -rf pipelines/mocks && mockery --config=.mockery.yaml --name=. --dir=pipelines --output=pipelines/mocks
 	rm -rf xmlparse/mocks && mockery --config=.mockery.yaml --name=. --dir=xmlparse --output=xmlparse/mocks
 	rm -rf tg/tgchain/mocks && mockery --config=.mockery.yaml --name=. --dir=tg/tgchain --output=tg/tgchain/mocks
 	rm -rf tg/telebotmdw/mocks && mockery --config=.mockery.yaml --name=. --dir=tg/telebotmdw --output=tg/telebotmdw/mocks
+	rm -rf metrics/mocks && mockery --config=.mockery.yaml --name=. --dir=metrics --output=metrics/mocks
 
 tests: ## Run unit tests
 	@mkdir -p .profiles
