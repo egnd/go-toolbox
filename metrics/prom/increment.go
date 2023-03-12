@@ -25,6 +25,11 @@ func NewIncrement(opts prometheus.CounterOpts, labels ...string) *Increment {
 	return &res
 }
 
+// Add value to increment.
+func (m *Increment) Add(val int) {
+	m.Counter.Add(float64(val))
+}
+
 // With updates metric labels values.
 func (m *Increment) With(labelsVals ...string) metrics.Increment {
 	if len(labelsVals) == 0 {

@@ -6,6 +6,7 @@ package metrics
 //go:generate mockery --name=Increment --dir=. --output=mocks
 type Increment interface {
 	Inc()
+	Add(int)
 	With(...string) Increment
 }
 
