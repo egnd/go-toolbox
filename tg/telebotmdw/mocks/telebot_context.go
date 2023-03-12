@@ -256,6 +256,22 @@ func (_m *TelebotContext) EditOrSend(what interface{}, opts ...interface{}) erro
 	return r0
 }
 
+// Entities provides a mock function with given fields:
+func (_m *TelebotContext) Entities() telebot.Entities {
+	ret := _m.Called()
+
+	var r0 telebot.Entities
+	if rf, ok := ret.Get(0).(func() telebot.Entities); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(telebot.Entities)
+		}
+	}
+
+	return r0
+}
+
 // Forward provides a mock function with given fields: msg, opts
 func (_m *TelebotContext) Forward(msg telebot.Editable, opts ...interface{}) error {
 	var _ca []interface{}
