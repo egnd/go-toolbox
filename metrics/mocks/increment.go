@@ -12,6 +12,11 @@ type Increment struct {
 	mock.Mock
 }
 
+// Add provides a mock function with given fields: _a0
+func (_m *Increment) Add(_a0 int) {
+	_m.Called(_a0)
+}
+
 // Inc provides a mock function with given fields:
 func (_m *Increment) Inc() {
 	_m.Called()
