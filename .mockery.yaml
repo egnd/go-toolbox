@@ -1,29 +1,3 @@
 quiet: false
 case: underscore
 recursive: true
-# inpackage: true
-
-
-# --all                       generates mocks for all found interfaces in all sub-directories
-# --boilerplate-file string   File to read a boilerplate text from. Text should be a go block comment, i.e. /* ... */
-# --cpuprofile string         write cpu profile to file
-# --dir string                directory to search for interfaces (default ".")
-# --disable-version-string    Do not insert the version string into the generated mock file.
-# -d, --dry-run                   Do a dry run, don't modify any files
-# --exported                  Generates public mocks for private interfaces.
-# --filename string           name of generated file (only works with -name and no regex)
-# -h, --help                      help for mockery
-# --keeptree                  keep the tree structure of the original interface files into a different repository. Must be used with XX
-# --log-level string          Level of logging (default "info")
-# --name string               name or matching regular expression of interface to generate mock for
-# --note string               comment to insert into prologue of each generated file
-# --outpkg string             name of generated package (default "mocks")
-# --packageprefix string      prefix for the generated package name, it is ignored if outpkg is also specified.
-# --print                     print the generated mock to stdout
-# --srcpkg string             source pkg to search for interfaces
-# --structname string         name of generated struct (only works with -name and no regex)
-# --tags string               space-separated list of additional build tags to use
-# --testonly                  generate a mock in a _test.go file
-# --unroll-variadic           For functions with variadic arguments, do not unroll the arguments into the underlying testify call. Instead, pass variadic slice as-is. (default true)
-# --version                   prints the installed version of mockery
-# --with-expecter             Generate expecter utility around mock's On, Run and Return methods with explicit types. This option is NOT compatible with -unroll-variadic=false

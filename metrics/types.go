@@ -1,27 +1,35 @@
 // Package metrics is a wrapper for different metrics clients.
 package metrics
 
-// Increment is an interface for increment metric.
-//
 //go:generate mockery --name=Increment --dir=. --output=mocks
+
+// Increment is an interface for increment metric.
 type Increment interface {
 	Inc()
-	Add(int)
-	With(...string) Increment
+	Add(float64)
+}
+
+type IncrementBuilder interface {
+	With(...string) IncrementBuilder
+	Build() Increment
 }
 
 // Counter is an interface for counter metric.
-//
-//go:generate mockery --name=Counter --dir=. --output=mocks
 type Counter interface {
 	Set(float64)
-	With(...string) Counter
+}
+
+type CounterBuilder interface {
+	With(...string) CounterBuilder
+	Build() Counter
 }
 
 // Histo is an interface for histogram metric.
-//
-//go:generate mockery --name=Histo --dir=. --output=mocks
 type Histo interface {
 	Update(float64)
-	With(...string) Histo
+}
+
+type HistoBuilder interface {
+	With(...string) HistoBuilder
+	Build() Histo
 }

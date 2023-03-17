@@ -1,16 +1,15 @@
-package metrics_test
+package prom
 
 import (
 	"fmt"
 	"testing"
 
-	"github.com/egnd/go-toolbox/metrics"
 	"github.com/stretchr/testify/assert"
 )
 
-func Test_Labels(t *testing.T) {
-	names := []string{"param1", "param2", "param3"}
-	labels := metrics.NewLabels(names)
+func Test_builder(t *testing.T) {
+	labels := []string{"param1", "param2", "param3"}
+	builder := newBuilder(labels)
 
 	for k, test := range []struct {
 		lvs    []string
@@ -51,9 +50,8 @@ func Test_Labels(t *testing.T) {
 		},
 	} {
 		t.Run(fmt.Sprint(k+1), func(t *testing.T) {
-			labels = labels.With(test.lvs...)
-			assert.EqualValues(t, names, labels.Names())
-			assert.EqualValues(t, test.values, labels.Values())
+			builder.append(test.lvs)
+			assert.EqualValues(t, test.values, builder.values())
 		})
 	}
 }

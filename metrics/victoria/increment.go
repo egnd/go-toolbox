@@ -5,34 +5,33 @@ import (
 	"github.com/egnd/go-toolbox/metrics"
 )
 
-// Increment is a victoria metric.
+type increment struct {
+	*vict.FloatCounter
+}
+
+func (incr *increment) Inc() {
+	incr.Add(1)
+}
+
+// Increment is a prom metric.
 type Increment struct {
-	*vict.Counter
-	opts   *Opts
-	labels metrics.Labels
+	builder
+	opts Opts
 }
 
 // NewIncrement factory method for Increment.
-func NewIncrement(opts *Opts, labels ...string) *Increment {
-	res := Increment{ //nolint:exhaustruct
-		opts:   opts,
-		labels: metrics.NewLabels(labels),
+func NewIncrement(opts Opts, labels ...string) *Increment {
+	return &Increment{
+		builder: newBuilder(labels),
+		opts:    opts,
 	}
-
-	res.Counter = vict.GetOrCreateCounter(res.opts.ToString(&res.labels))
-
-	return &res
 }
 
-// With updates metric labels values.
-func (m *Increment) With(labelsVals ...string) metrics.Increment {
-	if len(labelsVals) == 0 {
-		return m
-	}
+func (m *Increment) With(labelsAndValues ...string) metrics.IncrementBuilder {
+	m.builder.append(labelsAndValues)
+	return m
+}
 
-	res := *m
-	res.labels = m.labels.With(labelsVals...)
-	res.Counter = vict.GetOrCreateCounter(res.opts.ToString(&res.labels))
-
-	return &res
+func (m *Increment) Build() metrics.Increment {
+	return &increment{vict.GetOrCreateFloatCounter(m.opts.ToString(m.values()))}
 }

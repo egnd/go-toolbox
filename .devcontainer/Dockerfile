@@ -1,5 +1,4 @@
-ARG VARIANT="1.19"
-FROM mcr.microsoft.com/devcontainers/go:0-${VARIANT}
+FROM mcr.microsoft.com/devcontainers/go:0-1.20
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends \
         make grep graphviz

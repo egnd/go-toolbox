@@ -2,11 +2,8 @@
 package victoria
 
 import (
-	"bytes"
 	"fmt"
 	"strings"
-
-	"github.com/egnd/go-toolbox/metrics"
 )
 
 // Opts is a sctruct for metric name.
@@ -17,14 +14,8 @@ type Opts struct {
 }
 
 // ToString converts Opts struct to metric name.
-func (o *Opts) ToString(labels *metrics.Labels) string {
-	name := o.buildName()
-
-	if labelsStr := o.buildLabels(labels); labelsStr != "" {
-		return fmt.Sprintf("%s{%s}", name, labelsStr)
-	}
-
-	return name
+func (o *Opts) ToString(labels string) string {
+	return fmt.Sprintf("%s%s", o.buildName(), labels)
 }
 
 func (o *Opts) buildName() string {
@@ -43,19 +34,4 @@ func (o *Opts) buildName() string {
 	}
 
 	return strings.Join(name, "_")
-}
-
-func (o *Opts) buildLabels(labels *metrics.Labels) string {
-	names := labels.Names()
-	if len(names) == 0 {
-		return ""
-	}
-
-	var res bytes.Buffer
-
-	for num, val := range labels.Values() {
-		res.WriteString(fmt.Sprintf(`%s="%s",`, names[num], val))
-	}
-
-	return strings.TrimRight(res.String(), ",")
 }
