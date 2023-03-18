@@ -15,7 +15,7 @@ type Counter struct {
 
 // NewCounter factory method for Counter.
 func NewCounter(opts prometheus.GaugeOpts, labels ...string) *Counter {
-	res := Counter{
+	res := Counter{ //nolint:exhaustruct
 		builder: newBuilder(labels),
 	}
 
@@ -24,11 +24,14 @@ func NewCounter(opts prometheus.GaugeOpts, labels ...string) *Counter {
 	return &res
 }
 
+// With append new values.
 func (m *Counter) With(labelsAndValues ...string) metrics.CounterBuilder {
 	m.builder.append(labelsAndValues)
+
 	return m
 }
 
+// Build metric instance.
 func (m *Counter) Build() metrics.Counter {
 	return m.factory.WithLabelValues(m.values()...)
 }

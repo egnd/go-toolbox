@@ -22,7 +22,7 @@ type Histo struct {
 
 // NewHisto factory method for Histo.
 func NewHisto(opts prometheus.HistogramOpts, labels ...string) *Histo {
-	res := Histo{
+	res := Histo{ //nolint:exhaustruct
 		builder: newBuilder(labels),
 	}
 
@@ -31,11 +31,14 @@ func NewHisto(opts prometheus.HistogramOpts, labels ...string) *Histo {
 	return &res
 }
 
+// With append new values.
 func (m *Histo) With(labelsAndValues ...string) metrics.HistoBuilder {
 	m.builder.append(labelsAndValues)
+
 	return m
 }
 
+// Build metric instance.
 func (m *Histo) Build() metrics.Histo {
 	return &histogram{m.factory.WithLabelValues(m.values()...)}
 }

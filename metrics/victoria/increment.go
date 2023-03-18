@@ -27,11 +27,14 @@ func NewIncrement(opts Opts, labels ...string) *Increment {
 	}
 }
 
+// With append new values.
 func (m *Increment) With(labelsAndValues ...string) metrics.IncrementBuilder {
 	m.builder.append(labelsAndValues)
+
 	return m
 }
 
+// Build metric instance.
 func (m *Increment) Build() metrics.Increment {
 	return &increment{vict.GetOrCreateFloatCounter(m.opts.ToString(m.values()))}
 }

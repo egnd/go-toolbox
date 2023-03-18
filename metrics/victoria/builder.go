@@ -31,6 +31,7 @@ func (b *builder) append(lvs []string) {
 	}
 
 	var exists bool
+
 	for num := range lvs {
 		if num%2 != 0 {
 			continue

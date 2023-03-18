@@ -9,6 +9,7 @@ type Increment interface {
 	Add(float64)
 }
 
+// IncrementBuilder is an interface for increment builder.
 type IncrementBuilder interface {
 	With(...string) IncrementBuilder
 	Build() Increment
@@ -19,6 +20,7 @@ type Counter interface {
 	Set(float64)
 }
 
+// CounterBuilder is an interface for counter builder.
 type CounterBuilder interface {
 	With(...string) CounterBuilder
 	Build() Counter
@@ -29,6 +31,7 @@ type Histo interface {
 	Update(float64)
 }
 
+// HistoBuilder is an interface for histogram builder.
 type HistoBuilder interface {
 	With(...string) HistoBuilder
 	Build() Histo

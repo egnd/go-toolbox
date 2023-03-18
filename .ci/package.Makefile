@@ -1,8 +1,7 @@
 -include ../.ci/base.Makefile
 
 mocks: ## Generate package mocks
-# go generate ./...
-	rm -rf mocks && mockery --config=../.mockery.yaml --name=. --dir=. --output=mocks
+	rm -rf mocks && mockery
 
 tests: ## Test package
 	@mkdir -p .profiles
@@ -17,3 +16,6 @@ endif
 
 lint: ## Lint package
 	golangci-lint run --color=always --config=../.golangci.yml ./...
+
+vendor:
+	go mod tidy

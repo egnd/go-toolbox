@@ -19,11 +19,14 @@ func NewCounter(opts Opts, labels ...string) *Counter {
 	}
 }
 
+// With append new values.
 func (m *Counter) With(labelsAndValues ...string) metrics.CounterBuilder {
 	m.builder.append(labelsAndValues)
+
 	return m
 }
 
+// Build metric instance.
 func (m *Counter) Build() metrics.Counter {
 	return vict.GetOrCreateFloatCounter(m.opts.ToString(m.values()))
 }

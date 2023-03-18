@@ -14,7 +14,7 @@ type Increment struct {
 
 // NewIncrement factory method for Increment.
 func NewIncrement(opts prometheus.CounterOpts, labels ...string) *Increment {
-	res := Increment{
+	res := Increment{ //nolint:exhaustruct
 		builder: newBuilder(labels),
 	}
 
@@ -23,11 +23,14 @@ func NewIncrement(opts prometheus.CounterOpts, labels ...string) *Increment {
 	return &res
 }
 
+// With append new values.
 func (m *Increment) With(labelsAndValues ...string) metrics.IncrementBuilder {
 	m.builder.append(labelsAndValues)
+
 	return m
 }
 
+// Build metric instance.
 func (m *Increment) Build() metrics.Increment {
 	return m.factory.WithLabelValues(m.values()...)
 }

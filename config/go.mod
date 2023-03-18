@@ -1,4 +1,4 @@
-module github.com/egnd/go-toolbox/httpclient
+module github.com/egnd/go-toolbox/config
 
 go 1.20
 

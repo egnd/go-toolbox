@@ -1,6 +1,12 @@
 go 1.20
 
 use (
+	./config
+	./graceful
 	./httpclient
+	./logging
 	./metrics
+	./pipelines
+	./tg
+	./xmlparse
 )

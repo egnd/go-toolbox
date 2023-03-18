@@ -1,3 +1,4 @@
 quiet: false
 case: underscore
-recursive: true
+# recursive: true
+all: true
