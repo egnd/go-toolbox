@@ -6,7 +6,7 @@ CALL_PARAM=$(filter-out $@,$(MAKECMDGOALS))
 COVER_REPORT=html
 
 _packages:
-	@for package_dir in $$(go list -f '{{.Dir}}' -m | xargs); do \
+	@for package_dir in $$(go list -m -f '{{.Dir}}' | xargs); do \
 		echo "Package $$(basename $$package_dir):"; \
 		cd $$package_dir && make $$cmd; \
 		echo ""; \
@@ -44,7 +44,7 @@ ifeq ($(COVER_REPORT),html)
 endif
 
 lint: ## Lint all packages
-	go list -f '{{.Dir}}' -m | xargs golangci-lint run --color=always --config=.golangci.yml
+	go list -m -f '{{.Dir}}' | xargs golangci-lint run --color=always --config=.golangci.yml
 
 vendor: ## Install packages required modules
 	@$(MAKE) _packages cmd=vendor
