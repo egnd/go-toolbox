@@ -29,21 +29,21 @@ jobs:
     runs-on: ubuntu-latest
     needs: [todos, conflicts]
     steps:
-      - uses: actions/setup-go@v3
-        with:
-          go-version: 1.20
-      - uses: actions/checkout@v3
-      - run: wget https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh -O - | sudo sh -s -- -b $(go env GOPATH)/bin v1.52.0
-      - run: make lint
+    - uses: actions/checkout@v3
+    - uses: actions/setup-go@v3
+      with:
+        go-version: 1.20
+    - run: wget https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh -O - | sudo sh -s -- -b $(go env GOPATH)/bin v1.52.0
+    - run: make lint
   
   units:
     runs-on: ubuntu-latest
     needs: [todos, conflicts]
     steps:
-      - uses: actions/setup-go@v3
-        with:
-          go-version: 1.20
-      - uses: actions/checkout@v3
-      - run: make coverage COVER_REPORT=false
-      - run: cp .profiles/cover.out coverage.txt
-      - uses: codecov/codecov-action@v3
+    - uses: actions/checkout@v3
+    - uses: actions/setup-go@v3
+      with:
+        go-version: 1.20
+    - run: make coverage COVER_REPORT=false
+    - run: cp .profiles/cover.out coverage.txt
+    - uses: codecov/codecov-action@v3
