@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/egnd/go-toolbox/metrics"
 	"github.com/egnd/go-toolbox/metrics/victoria"
 )
 
@@ -16,15 +17,12 @@ func Test_Counter(t *testing.T) {
 		{
 			labels: []string{"label1"},
 			with:   []string{"label1", "val1"},
-			val:    100,
-		},
-		{
-			val: 100,
+			val:    123,
 		},
 	} {
 		t.Run(fmt.Sprint(k+1), func(t *testing.T) {
-			victoria.NewCounter(&victoria.Opts{Name: "counter" + fmt.Sprint(k+1)}, test.labels...).
-				With(test.with...).Set(test.val)
+			var obj metrics.CounterBuilder = victoria.NewCounter(victoria.Opts{Name: "counter" + fmt.Sprint(k+1)}, test.labels...)
+			obj.With(test.with...).Build().Set(test.val)
 		})
 	}
 }

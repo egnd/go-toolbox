@@ -9,32 +9,29 @@ import (
 
 // Counter is a prom metric.
 type Counter struct {
-	prometheus.Gauge
-	labels  metrics.Labels
+	builder
 	factory *prometheus.GaugeVec
 }
 
-// NewCounter is a factory method for Counter.
+// NewCounter factory method for Counter.
 func NewCounter(opts prometheus.GaugeOpts, labels ...string) *Counter {
 	res := Counter{ //nolint:exhaustruct
-		labels: metrics.NewLabels(labels),
+		builder: newBuilder(labels),
 	}
 
-	res.factory = promauto.NewGaugeVec(opts, res.labels.Names())
-	res.Gauge = res.factory.WithLabelValues(res.labels.Values()...)
+	res.factory = promauto.NewGaugeVec(opts, res.labels)
 
 	return &res
 }
 
-// With updates metric labels values.
-func (m *Counter) With(labelsVals ...string) metrics.Counter {
-	if len(labelsVals) == 0 {
-		return m
-	}
+// With append new values.
+func (m *Counter) With(labelsAndValues ...string) metrics.CounterBuilder {
+	m.builder.append(labelsAndValues)
 
-	res := *m
-	res.labels = m.labels.With(labelsVals...)
-	res.Gauge = res.factory.WithLabelValues(res.labels.Values()...)
+	return m
+}
 
-	return &res
+// Build metric instance.
+func (m *Counter) Build() metrics.Counter {
+	return m.factory.WithLabelValues(m.values()...)
 }

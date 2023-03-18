@@ -5,34 +5,28 @@ import (
 	"github.com/egnd/go-toolbox/metrics"
 )
 
-// Counter is a victoria metric.
+// Counter is a prom metric.
 type Counter struct {
-	*vict.FloatCounter
-	opts   *Opts
-	labels metrics.Labels
+	builder
+	opts Opts
 }
 
-// NewCounter is a factory method for Counter.
-func NewCounter(opts *Opts, labels ...string) *Counter {
-	res := Counter{ //nolint:exhaustruct
-		opts:   opts,
-		labels: metrics.NewLabels(labels),
+// NewCounter factory method for Counter.
+func NewCounter(opts Opts, labels ...string) *Counter {
+	return &Counter{
+		builder: newBuilder(labels),
+		opts:    opts,
 	}
-
-	res.FloatCounter = vict.GetOrCreateFloatCounter(res.opts.ToString(&res.labels))
-
-	return &res
 }
 
-// With updates metric labels values.
-func (m *Counter) With(labelsVals ...string) metrics.Counter {
-	if len(labelsVals) == 0 {
-		return m
-	}
+// With append new values.
+func (m *Counter) With(labelsAndValues ...string) metrics.CounterBuilder {
+	m.builder.append(labelsAndValues)
 
-	res := *m
-	res.labels = m.labels.With(labelsVals...)
-	res.FloatCounter = vict.GetOrCreateFloatCounter(res.opts.ToString(&res.labels))
+	return m
+}
 
-	return &res
+// Build metric instance.
+func (m *Counter) Build() metrics.Counter {
+	return vict.GetOrCreateFloatCounter(m.opts.ToString(m.values()))
 }
