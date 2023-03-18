@@ -1,5 +1,9 @@
 # pipelines
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/egnd/go-toolbox/pipelines.svg)](https://pkg.go.dev/github.com/egnd/go-toolbox/pipelines)
+[![Go Report Card](https://goreportcard.com/badge/github.com/egnd/go-toolbox/pipelines)](https://goreportcard.com/report/github.com/egnd/go-toolbox/pipelines)
+
+
 Golang package for parallel execution of tasks.
 
 ### Pools types:

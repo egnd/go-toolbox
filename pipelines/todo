@@ -1,3 +1,5 @@
 - ctx with cancel
 - errgroup with concurrency limit
 - pool with dynamic workers count
+- add metrics collecting
+- improvements

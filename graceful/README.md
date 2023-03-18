@@ -1,5 +1,8 @@
 # graceful shutdown
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/egnd/go-toolbox/graceful.svg)](https://pkg.go.dev/github.com/egnd/go-toolbox/graceful)
+[![Go Report Card](https://goreportcard.com/badge/github.com/egnd/go-toolbox/graceful)](https://goreportcard.com/report/github.com/egnd/go-toolbox/graceful)
+
 ### Example:
 ```golang
 package main

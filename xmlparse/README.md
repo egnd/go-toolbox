@@ -1,5 +1,8 @@
 # xmlparse
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/egnd/go-toolbox/xmlparse.svg)](https://pkg.go.dev/github.com/egnd/go-toolbox/xmlparse)
+[![Go Report Card](https://goreportcard.com/badge/github.com/egnd/go-toolbox/xmlparse)](https://goreportcard.com/report/github.com/egnd/go-toolbox/xmlparse)
+
 Golang package for parsing xml data.
 
 ## Examples:
