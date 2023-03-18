@@ -34,6 +34,7 @@ linters:
     - goerr113 #@TODO: enable
     - wrapcheck #@TODO: enable
     - ireturn #@TODO: enable
+    - gomodguard #@TODO:
   fast: false
 issues:
   exclude-use-default: false

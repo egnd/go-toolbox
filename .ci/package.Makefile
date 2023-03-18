@@ -1,21 +1,25 @@
 -include ../.ci/base.Makefile
 
+COVER_REPORT=html
+
 mocks: ## Generate package mocks
 	rm -rf mocks && mockery
 
-tests: ## Test package
+test: ## Test package
 	@mkdir -p .profiles
 	go test -race -cover -covermode=atomic -coverprofile=.profiles/cover.out.tmp ./...
-
-coverage: tests ## Check package code coverage
 	@cat .profiles/cover.out.tmp | grep -v "mock_" > .profiles/cover.out
-	go tool cover -func=.profiles/cover.out
-ifneq ($(DISABLE_HTML),true)
+
+coverage: test ## Check package code coverage
+	@mkdir -p ../.profiles && cat .profiles/cover.out  | tail -n +2 >> ../.profiles/cover.out
+ifeq ($(COVER_REPORT),html)
 	go tool cover -html=.profiles/cover.out -o .profiles/report.html
+else ifeq ($(COVER_REPORT),cli)
+	go tool cover -func=.profiles/cover.out
 endif
 
 lint: ## Lint package
 	golangci-lint run --color=always --config=../.golangci.yml ./...
 
-vendor:
+vendor: ## Install required modules
 	go mod tidy
