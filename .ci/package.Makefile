@@ -1,6 +1,7 @@
 -include ../.ci/base.Makefile
 
 COVER_REPORT=html
+CALL_PARAM=$(filter-out $@,$(MAKECMDGOALS))
 
 mocks: ## Generate package mocks
 	rm -rf mocks && mockery
@@ -23,3 +24,10 @@ lint: ## Lint package
 
 vendor: ## Install required modules
 	go mod tidy
+
+bench: ## Run benchmarks
+	@mkdir -p .profiles
+	go test -benchmem -bench=. -cpuprofile=.profiles/cpu.out -memprofile=.profiles/mem.out -o package.test $(CALL_PARAM)
+	go tool pprof -svg package.test .profiles/cpu.out > .profiles/cpu.svg
+	go tool pprof -svg -alloc_space package.test .profiles/mem.out > .profiles/mem.svg
+	go tool pprof -svg -alloc_objects package.test .profiles/mem.out > .profiles/mem_objs.svg

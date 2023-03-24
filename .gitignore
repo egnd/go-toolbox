@@ -2,3 +2,4 @@ vendor
 .DS_Store
 .profiles
 /go.work.sum
+*.test
