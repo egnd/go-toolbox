@@ -1,5 +1,5 @@
 - ctx with cancel
-- errgroup with concurrency limit
 - pool with dynamic workers count
+- "sticky" pool of workers
 - add metrics collecting
-- improvements
+- delayed pool
